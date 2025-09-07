@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B Pharm All in One</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c3e50; /* Dark Blue */
+      --secondary-color: #3498db; /* Blue */
+      --text-color: #333;
+      --background-color: #e6f0ff; /* Light Blue */
+      --card-color: #ffffff; /* White */
+      --button-color: #2ecc71; /* Green */
+    }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background-color: var(--background-color); 
+      color: var(--text-color); 
+      margin: 0; 
+      padding: 20px; 
+      display: flex;
+      flex-direction: column; /* Changed to column to stack ad and container */
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container { 
+      width: 100%;
+      max-width: 650px; 
+      background-color: var(--card-color); 
+      padding: 30px; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .header { 
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-start; 
+      margin-bottom: 30px; 
+      flex-wrap: wrap; 
+    }
+    .logo { 
+      width: 60px; height: 60px; 
+      background-color: var(--secondary-color); 
+      color: var(--card-color); 
+      font-size: 1.8em; 
+      border-radius: 15px; 
+      display: flex; justify-content: center; align-items: center; 
+      margin-right: 20px; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .app-name { 
+      font-size: 1.6em; 
+      font-weight: 700; 
+      color: var(--primary-color);
+      letter-spacing: 1px;
+      text-align: left; 
+      line-height: 1.2; 
+    }
+    .options-grid { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 20px; 
+    }
+    .option-button { 
+      padding: 30px; 
+      background-color: var(--card-color); 
+      border-radius: 15px; 
+      font-size: 1.2em; 
+      font-weight: 600; 
+      cursor: pointer; 
+      transition: background-color 0.3s, transform 0.3s; 
+      display: flex; flex-direction: column; align-items: center; justify-content: center; 
+      text-align: center; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .option-button:hover { 
+      background-color: #f5f5f5; 
+      transform: translateY(-5px); 
+    }
+    .option-icon { 
+      font-size: 3em; 
+      margin-bottom: 15px; 
+    }
+    .page-content { 
+      margin-top: 30px; 
+      text-align: left; 
+    }
+    .page-content h2 {
+      font-size: 1.5em; 
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+    .back-button { 
+      padding: 12px 20px; 
+      border: none; 
+      background-color: var(--secondary-color); 
+      color: var(--card-color); 
+      border-radius: 8px; 
+      cursor: pointer; 
+      transition: background-color 0.3s;
+      font-weight: 600;
+    }
+    .back-button:hover {
+      background-color: #2980b9;
+    }
+    ul { 
+      list-style: none; 
+      padding: 0; 
+    }
+    li { 
+      padding: 20px; 
+      background-color: var(--card-color); 
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: flex; 
+      align-items: center;
+      cursor: pointer; 
+      transition: background-color 0.3s, transform 0.3s;
+      font-size: 1.1em;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+    }
+    li:hover {
+      background-color: #f5f5f5;
+      transform: translateX(5px);
+    }
+    .list-emoji {
+      font-size: 1.5em;
+      margin-right: 15px;
+    }
+    .download-btn { 
+      padding: 10px 15px; 
+      background-color: var(--button-color); 
+      color: var(--card-color); 
+      text-decoration: none; 
+      border-radius: 8px; 
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .download-btn:hover {
+      background-color: #27ae60;
+    }
+    .download-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: var(--card-color); 
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s;
+    }
+    .download-item:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .download-item-info {
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+    .download-item-name {
+      font-weight: 600;
+      font-size: 1.1em;
+      color: var(--primary-color);
+    }
+    .ad-container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="ad-container">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-app-pub-6499648269613560"
+       data-ad-slot="1910376569"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <div id="front-page">
+    <div class="header">
+      <div class="logo">💊</div>
+      <div class="app-name">B Pharm<br>All in One</div>
+    </div>
+    <div class="options-grid">
+      <div class="option-button" data-section="notes">
+        <div class="option-icon">📝</div> Notes
+      </div>
+      <div class="option-button" data-section="books">
+        <div class="option-icon">📚</div> Books
+      </div>
+      <div class="option-button" data-section="papers">
+        <div class="option-icon">📄</div> Previous Years Papers
+      </div>
+      <div class="option-button" data-section="imp-questions">
+        <div class="option-icon">💡</div> Imp Questions
+      </div>
+    </div>
+  </div>
+  
+  <div id="content-page" class="hidden">
+    <button class="back-button" id="backBtn">← Back</button>
+    
+    <div class="page-content" id="semester-page">
+      <h2><span class="list-emoji">🎓</span>Select Semester</h2>
+      <ul id="semester-list"></ul>
+    </div>
+    
+    <div class="page-content hidden" id="subject-page">
+      <h2><span class="list-emoji">📖</span>Select Subject</h2>
+      <ul id="subject-list"></ul>
+    </div>
+    
+    <div class="page-content hidden" id="item-page">
+      <h2><span class="list-emoji">⬇️</span>Downloads</h2>
+      <ul id="item-list"></ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6499648269613560"
+     crossorigin="anonymous"></script>
+
+<script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCOA5M0hgF-vzzDLcC929e1KQBXxn3QI9M",
+      authDomain: "b-pharm-all-in-one-de02b.firebaseapp.com",
+      databaseURL: "https://b-pharm-all-in-one-de02b-default-rtdb.firebaseio.com",
+      projectId: "b-pharm-all-in-one-de02b",
+      storageBucket: "b-pharm-all-in-one-de02b.firebasestorage.app",
+      messagingSenderId: "332776127583",
+      appId: "1:332776127583:web:d5f75b3d916f5a75bd2fea",
+      measurementId: "G-FLSJP8SRVL"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const bpharmData = {
+      'sem1': { name: 'Semester 1', subjects: ['Human Anatomy and Physiology I','Pharmaceutical Analysis I','Pharmaceutics I','Pharmaceutical Inorganic Chemistry','Communication Skills','Remedial Biology','Remedial Mathematics'] },
+      'sem2': { name: 'Semester 2', subjects: ['Human Anatomy and Physiology II','Pharmaceutical Organic Chemistry I','Biochemistry','Pathophysiology','Computer Applications in Pharmacy','Environmental Sciences'] },
+      'sem3': { name: 'Semester 3', subjects: ['Pharmaceutical Organic Chemistry II','Physical Pharmaceutics I','Pharmaceutical Microbiology','Pharmaceutical Engineering'] },
+      'sem4': { name: 'Semester 4', subjects: ['Pharmaceutical Organic Chemistry III','Medicinal Chemistry I','Physical Pharmaceutics II','Pharmacology I','Pharmacognosy and Phytochemistry I'] },
+      'sem5': { name: 'Semester 5', subjects: ['Medicinal Chemistry II','Industrial Pharmacy I','Pharmacology II','Pharmacognosy and Phytochemistry II','Pharmaceutical Jurisprudence'] },
+      'sem6': { name: 'Semester 6', subjects: ['Medicinal Chemistry III','Pharmacology III','Herbal Drug Technology','Biopharmaceutics and Pharmacokinetics','Pharmaceutical Biotechnology','Quality Assurance'] },
+      'sem7': { name: 'Semester 7', subjects: ['Instrumental Methods of Analysis','Industrial Pharmacy II','Pharmacy Practice','Novel Drug Delivery System'] },
+      'sem8': { name: 'Semester 8', subjects: ['Biostatistics and Research Methodology','Social and Preventive Pharmacy','Pharma Marketing Management','Pharmaceutical Regulatory Science','Pharmacovigilance','Quality Control and Standardization of Herbals','Computer Aided Drug Design','Cell and Molecular Biology','Cosmetic Science','Experimental Pharmacology','Advanced Instrumentation Techniques','Dietary Supplements and Nutraceuticals'] }
+    };
+
+    const emojis = {
+      'sem1': '1️⃣','sem2': '2️⃣','sem3': '3️⃣','sem4': '4️⃣','sem5': '5️⃣','sem6': '6️⃣','sem7': '7️⃣','sem8': '8️⃣',
+      'Human Anatomy and Physiology I': '🧠','Pharmaceutical Analysis I': '🧪','Pharmaceutics I': '💊','Pharmaceutical Inorganic Chemistry': '⚗️','Communication Skills': '💬','Remedial Biology': '🌱','Remedial Mathematics': '📐',
+      'Human Anatomy and Physiology II': '🧠','Pharmaceutical Organic Chemistry I': '🧪','Biochemistry': '🧬','Pathophysiology': '🩺','Computer Applications in Pharmacy': '💻','Environmental Sciences': '🌍',
+      'Pharmaceutical Organic Chemistry II': '🧪','Physical Pharmaceutics I': '🔬','Pharmaceutical Microbiology': '🦠','Pharmaceutical Engineering': '⚙️',
+      'Pharmaceutical Organic Chemistry III': '🧪','Medicinal Chemistry I': '💊','Physical Pharmaceutics II': '🔬','Pharmacology I': '💉','Pharmacognosy and Phytochemistry I': '🌿',
+      'Medicinal Chemistry II': '💊','Industrial Pharmacy I': '🏭','Pharmacology II': '💉','Pharmacognosy and Phytochemistry II': '🌿','Pharmaceutical Jurisprudence': '⚖️',
+      'Medicinal Chemistry III': '💊','Pharmacology III': '💉','Herbal Drug Technology': '🍀','Biopharmaceutics and Pharmacokinetics': '📈','Pharmaceutical Biotechnology': '🧫','Quality Assurance': '✅',
+      'Instrumental Methods of Analysis': '🔬','Industrial Pharmacy II': '🏭','Pharmacy Practice': '🏥','Novel Drug Delivery System': '🚀',
+      'Biostatistics and Research Methodology': '📊','Social and Preventive Pharmacy': '🫂','Pharma Marketing Management': '📢','Pharmaceutical Regulatory Science': '📜','Pharmacovigilance': '🛡️','Quality Control and Standardization of Herbals': '🌿','Computer Aided Drug Design': '💻','Cell and Molecular Biology': '🔬','Cosmetic Science': '💄','Experimental Pharmacology': '🧪','Advanced Instrumentation Techniques': '⚙️','Dietary Supplements and Nutraceuticals': '🥦'
+    };
+
+    const frontPage = document.getElementById('front-page');
+    const contentPage = document.getElementById('content-page');
+    const backBtn = document.getElementById('backBtn');
+    const semesterPage = document.getElementById('semester-page');
+    const subjectPage = document.getElementById('subject-page');
+    const itemPage = document.getElementById('item-page');
+    const pageHistory = ['front-page'];
+    let currentSection = '', currentSemesterId = '', currentSubjectId = '';
+
+    document.querySelectorAll('.option-button').forEach(button => {
+      button.addEventListener('click', () => {
+        currentSection = button.getAttribute('data-section');
+        showPage('semester');
+        loadSemestersFromData();
+      });
+    });
+    backBtn.addEventListener('click', handleBackNavigation);
+
+    function handleBackNavigation() {
+      pageHistory.pop();
+      if (pageHistory.length > 0) {
+        const previousPageId = pageHistory[pageHistory.length - 1];
+        showPage(previousPageId);
+      } else {
+        pageHistory.push('front');
+        showPage('front');
+      }
+    }
+    window.addEventListener('popstate', handleBackNavigation);
+
+    function showPage(page) {
+      frontPage.classList.add('hidden');
+      contentPage.classList.add('hidden');
+      semesterPage.classList.add('hidden');
+      subjectPage.classList.add('hidden');
+      itemPage.classList.add('hidden');
+      if (page === 'front') {
+        frontPage.classList.remove('hidden');
+      } else {
+        contentPage.classList.remove('hidden');
+        if (page === 'semester') semesterPage.classList.remove('hidden');
+        if (page === 'subject') subjectPage.classList.remove('hidden');
+        if (page === 'item') itemPage.classList.remove('hidden');
+      }
+      if (pageHistory[pageHistory.length - 1] !== page) pageHistory.push(page);
+    }
+
+    function loadSemestersFromData() {
+      const list = document.getElementById('semester-list');
+      list.innerHTML = '';
+      Object.keys(bpharmData).forEach(semesterId => {
+        const li = document.createElement('li');
+        const emoji = emojis[semesterId] || '📚';
+        li.innerHTML = `<span class="list-emoji">${emoji}</span><span>${bpharmData[semesterId].name}</span>`;
+        li.onclick = () => {
+          currentSemesterId = semesterId;
+          showPage('subject');
+          loadSubjectsFromData(semesterId);
+        };
+        list.appendChild(li);
+      });
+    }
+
+    function loadSubjectsFromData(semesterId) {
+      const list = document.getElementById('subject-list');
+      list.innerHTML = '';
+      bpharmData[semesterId].subjects.forEach(subjectName => {
+        const li = document.createElement('li');
+        const emoji = emojis[subjectName] || '📖';
+        li.innerHTML = `<span class="list-emoji">${emoji}</span><span>${subjectName}</span>`;
+        li.onclick = () => {
+          currentSubjectId = subjectName.replace(/\s+/g, '-').toLowerCase(); 
+          showPage('item');
+          loadItems();
+        };
+        list.appendChild(li);
+      });
+    }
+
+    async function loadItems() {
+      const list = document.getElementById('item-list');
+      list.innerHTML = '';
+        
+      let collectionName = '';
+      if (currentSection === 'notes') collectionName = 'notes';
+      else if (currentSection === 'books') collectionName = 'books';
+      else if (currentSection === 'papers') collectionName = 'papers';
+      else if (currentSection === 'imp-questions') collectionName = 'imp_questions';
+        
+      const itemsSnapshot = await db.collection('semesters').doc(currentSemesterId).collection('subjects').doc(currentSubjectId).collection(collectionName).orderBy('name').get();
+        
+      if (itemsSnapshot.empty) {
+        const li = document.createElement('li');
+        li.textContent = 'No items available.';
+        li.style.cursor = 'default';
+        li.style.justifyContent = 'center';
+        list.appendChild(li);
+        return;
+      }
+
+      itemsSnapshot.forEach(doc => {
+        const data = doc.data();
+        const div = document.createElement('div');
+        div.classList.add('download-item');
+        div.innerHTML = `
+          <div class="download-item-info">
+            <span style="font-size: 2em; margin-right: 15px;">📥</span>
+            <span class="download-item-name">${data.name}</span>
+          </div>
+          <a href="${data.url}" class="download-btn" target="_blank">Download</a>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showPage('front');
+      history.pushState(null, null, location.href);
+    });
+</script>
+</body>
+</html>
+<script type='text/javascript' src='//pl27515344.revenuecpmgate.com/c6/e2/36/c6e236edc64783c9ac3e1e243231607d.js'></script>
+<script async="async" data-cfasync="false" src="//pl27507940.revenuecpmgate.com/055f2411f922d6b8a00f35be6f8c4e6f/invoke.js"></script>
+<div id="container-055f2411f922d6b8a00f35be6f8c4e6f"></div>
